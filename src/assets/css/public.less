@@ -1,0 +1,57 @@
+// 边框的四个直角
+.panel-border-top {
+  position: relative;
+
+  // 边框的四个直角——左上角
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border-top: 3px solid #00FFFC;
+    border-left: 3px solid #00FFFC;
+    content: '';
+  }
+  
+  // 边框的四个直角——右上角
+  &::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border-top: 3px solid #00FFFC;
+    border-right: 3px solid #00FFFC;
+    content: '';
+  }
+
+  .panel-border-bottom {
+  
+    // 边框的四个直角——左下角
+    &::before {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 14px;
+      height: 14px;
+      border-bottom: 3px solid #00FFFC;
+      border-left: 3px solid #00FFFC;
+      content: '';
+    }
+  
+    // 边框的四个直角——右下角
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 14px;
+      height: 14px;
+      border-bottom: 3px solid #00FFFC;
+      border-right: 3px solid #00FFFC;
+      content: '';
+    }
+  }
+}
+
+@borderSize : 0.75rem;
