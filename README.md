@@ -1,4 +1,4 @@
-# echarts-project
+# EchartsNote
 
 ## Project setup
 ```
