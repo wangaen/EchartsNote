@@ -40,7 +40,7 @@ export default {
   mounted() {
     this.getDateTime()
   },
-  beforeUnmount() {
+  beforeDestroy() {
     clearInterval(this.timer)
   }
 

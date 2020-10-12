@@ -7,22 +7,21 @@
 </template>
 
 <script>
-  export default {
+export default {
     name : "chart1",
     data(){
       return {}
     },
-    components:{},
-
     created(){},
-
-    mounted(){},
-
-    computed:{},
-
-    methods:{},
-
-    watch:{},
+    mounted(){
+      this.myEchart()
+    },
+    methods:{
+      myEchart (){
+        // let chart = this.$Echarts.init(this.$refs.LeftChart1)
+        console.log('4444444444');
+      }
+    },
   }
 </script>
 
