@@ -18,8 +18,8 @@ export default {
     },
     methods:{
       myEchart (){
-        // let chart = this.$Echarts.init(this.$refs.LeftChart1)
-        console.log('4444444444');
+        let chart = this.$Echarts.init(this.$refs.LeftChart1)
+        chart.setOption(this.$setOption.bar1())
       }
     },
   }
