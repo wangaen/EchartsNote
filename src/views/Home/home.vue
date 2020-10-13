@@ -28,6 +28,7 @@
           </div>
         </div>
       </div>
+
       <!-- 中间模块 -->
       <div class="center">
         <div class="center-top">
@@ -35,6 +36,7 @@
         </div>
         <area-Map></area-Map>
       </div>
+      
       <!-- 右边模块 -->
       <div class="right">
         <div class="main-panel">
