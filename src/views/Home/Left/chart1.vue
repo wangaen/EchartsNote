@@ -7,10 +7,14 @@
 </template>
 
 <script>
+import resizeChart from '../../../utils/js/resizeChart'
 export default {
     name : "chart1",
+    mixins: [resizeChart],
     data(){
-      return {}
+      return {
+        chart: ''
+      }
     },
     created(){},
     mounted(){
@@ -18,8 +22,8 @@ export default {
     },
     methods:{
       myEchart (){
-        let chart = this.$Echarts.init(this.$refs.LeftChart1)
-        chart.setOption(this.$setOption.bar1())
+         this.chart = this.$Echarts.init(this.$refs.LeftChart1)
+        this.chart.setOption(this.$setOption.bar1())
       }
     },
   }
@@ -38,8 +42,7 @@ export default {
       line-height: 0.6rem;
     }
     .LeftChart1 {
-      height: 2.5rem;
-      background: gold;
+      height: 2.5rem; 
     }
   }
 </style>
