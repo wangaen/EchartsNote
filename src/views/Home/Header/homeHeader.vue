@@ -5,7 +5,7 @@
     </div>
 
     <div class="head-center">
-      <span>ECharts学习分布图</span>
+      <span>ECharts-柱状图</span>
     </div>
 
     <div class="head-right">

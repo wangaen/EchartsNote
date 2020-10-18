@@ -1,6 +1,6 @@
 <template>
   <div class="chart1">
-    <h2>就业行业</h2>
+    <h2>常见柱状图</h2>
     <div class="LeftChart1" ref="LeftChart1">
     </div>
   </div>
@@ -13,17 +13,27 @@ export default {
     mixins: [resizeChart],
     data(){
       return {
-        chart: ''
+        chart: '',
+        barData: [
+          {name: '周日', value: 2290},
+          {name: '周一', value: 1999},
+          {name: '周二', value: 1087},
+          {name: '周三', value: 1956},
+          {name: '周四', value: 2789},
+          {name: '周五', value: 2276},
+          {name: '周六', value: 3000},
+        ]
       }
     },
-    created(){},
     mounted(){
       this.myEchart()
     },
     methods:{
       myEchart (){
-         this.chart = this.$Echarts.init(this.$refs.LeftChart1)
-        this.chart.setOption(this.$setOption.bar1())
+        let xAxisData = this.barData.map(item => item.name)
+        let seriesData = this.barData.map(item => item.value)
+        this.chart = this.$Echarts.init(this.$refs.LeftChart1)
+        this.chart.setOption(this.$setOption.EasyBar(xAxisData,seriesData))
       }
     },
   }

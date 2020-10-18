@@ -1,64 +1,81 @@
-function bar1 () {
-  return {
-    tooltip: {
-        trigger: 'axis',
-        borderWidth: 5,
-        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-        }
-    },
-    xAxis: {
-        type: 'category',
-        axisLine: {
-            show: false,
-            lineStyle: {
-                color: 'rgba(58, 238, 229, 1)'
+import echarts from 'echarts'
+
+function EasyBar (xAxisData, seriesData) {
+    let option = {
+        xAxis: {
+          data: xAxisData,
+          axisLabel: {
+            textStyle: {
+              color: '#fff'
             }
-        },
-        axisTick: {
-            show: false,
-            alignWithLabel: true
-        },
-        axisLabel: {
-            show: true,
-            color: '#FFFFFF'
-        },
-        boundaryGap: true,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value',
-        axisLine: {
-            show: true,
-            lineStyle: {
-                color: 'FFFFFF'
-            }
-        },
-        axisTick: {
+          },
+          axisTick: {
             show: false
-        },
-        axisLabel: {
-            color: '#FFFFFF'
-        },
-        splitLine: {
-            lineStyle: {
-                color: 'rgba(255, 255, 255, 1)'
+          },
+          axisLine: {
+            lineStyle:{
+                color: '#FFFFFF'
             }
-        }
-
-    },
-    grid: {
-        left: '2%',
-        bottom: '3%',
-        right: '4%',
-        containLabel: true
-    },
-    series: [{
-        type: 'bar',
-        barWidth: 12,
-        data: [120, 200, 150, 80, 70, 110, 130],
-    }]
+          }
+        },
+        tooltip:{
+          trigger:'axis',
+          axisPointer:{
+            type:'shadow'
+          }
+        },
+        yAxis: {
+          axisLabel: {
+            textStyle: {
+              color: '#FFFFFF'
+            }
+          },
+          axisTick:{
+            show:false
+          },
+          axisLine:{
+            lineStyle:{
+              color: '#FFFFFF'
+            }
+          },
+          splitLine:{
+            show:true,
+            lineStyle:{
+              color: 'rgba(256,256,256,0.2)'
+            }
+          }
+        },
+        series: [
+          {
+            type: 'bar',
+            barMaxWidth:10,
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                    {offset: 0, color: '#81DD5F'},
+                    {offset: .33, color: '#83DE5F'},
+                    {offset: .66, color: '#BEF25C'},
+                    {offset: 1, color: '#D5EF2D'}
+                ]
+              ),
+              barBorderRadius: [5, 5, 0, 0]
+            },
+            data: seriesData
+          }
+        ],
+        grid: {
+          left: '1%',
+          right: '1%',
+          bottom: '5%',
+          top: '10%',
+          containLabel: true
+        },
+        textStyle:{
+          color: '#FFFFFF'
+        },
+    };
+    return option
 }
-}
 
-export default {bar1}
+export default {EasyBar}
