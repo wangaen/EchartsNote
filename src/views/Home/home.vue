@@ -107,6 +107,9 @@ export default {
       .left , .right {
         flex: 5.5;
         margin: 0rem 0.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         box-sizing: border-box;
       }
       .center{
