@@ -41,21 +41,21 @@
       <div class="right">
         <div class="main-panel">
           <div class="panel-border-top">
-            <left-chart1></left-chart1>
+            <right-chart1></right-chart1>
             <div class=" panel-border-bottom"> </div>
           </div>
         </div>
 
         <div class="main-panel">
           <div class="panel-border-top">
-            <left-chart2></left-chart2>
+            <right-chart2></right-chart2>
             <div class=" panel-border-bottom"> </div>
           </div>
         </div>
 
         <div class="main-panel">
           <div class="panel-border-top">
-            <left-chart3></left-chart3>
+            <right-chart3></right-chart3>
             <div class=" panel-border-bottom"> </div>
           </div>
         </div>
@@ -69,6 +69,9 @@ import homeHead from './Header/homeHeader'
 import leftChart1 from './Left/chart1'
 import leftChart2 from './Left/chart2'
 import leftChart3 from './Left/chart3'
+import rightChart1 from './Right/chart1'
+import rightChart2 from './Right/chart2'
+import rightChart3 from './Right/chart3'
 import areaMap from './Center/areaMap'
 import cards from './Center/cards'
 export default {
@@ -82,6 +85,9 @@ export default {
     leftChart1,
     leftChart2,
     leftChart3,
+    rightChart1,
+    rightChart2,
+    rightChart3,
     areaMap,
     cards,
   }

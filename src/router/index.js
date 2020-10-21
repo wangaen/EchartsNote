@@ -11,7 +11,10 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      title: '柱状图'
+    }
   }
 ]
 const router = new VueRouter({

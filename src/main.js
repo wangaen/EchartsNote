@@ -13,6 +13,16 @@ Vue.prototype.$setOption = setOption
 
 Vue.config.productionTip = false
 
+// 导航守卫
+router.beforeEach( (to, from, next) => {
+  // 路由改变时，更换页面标题
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  // 继续进入该页面
+  next()
+})
+
 new Vue({
   router,
   store,

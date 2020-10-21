@@ -41,7 +41,6 @@ export default {
 
 <style scoped lang="less">
   .chart1{
-
     h2 {
       font-size: 0.3rem;
       color: #ffffff;
@@ -52,7 +51,7 @@ export default {
       line-height: 0.6rem;
     }
     .LeftChart1 {
-      height: 2.5rem; 
+      height: 2.75rem; 
     }
   }
 </style>
