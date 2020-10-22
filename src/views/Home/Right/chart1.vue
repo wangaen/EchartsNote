@@ -33,7 +33,7 @@ export default {
         let xAxisData = this.barData.map(item => item.name)
         let seriesData = this.barData.map(item => item.value)
         this.chart = this.$Echarts.init(this.$refs.RightChart1)
-        this.chart.setOption(this.$setOption.homeRight1(xAxisData,seriesData))
+        // this.chart.setOption(this.$setOption.homeRight1(xAxisData,seriesData))
       }
     },
   }

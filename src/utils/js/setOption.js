@@ -84,7 +84,7 @@ function homeLeft1 (xAxisData, seriesData) {
     return option
 }
 
-function homeLeft2 (xAxisData, seriesData) {
+function homeLeft21 (xAxisData, seriesData) {
   let option = {
     // x轴相关设置
       xAxis: {
@@ -182,7 +182,7 @@ function homeLeft2 (xAxisData, seriesData) {
   return option
 }
 
-function homeLeft3 (xAxisData, seriesData) {
+function homeLeft22 (xAxisData, seriesData) {
   let option = {
     // x轴相关设置
       xAxis: {
@@ -293,8 +293,8 @@ function homeLeft3 (xAxisData, seriesData) {
       grid: {
         left: '1%',
         right: '1%',
-        bottom: '3%',
-        top: '25%',
+        bottom: '5%',
+        top: '10%',
         containLabel: true
       },
       //全局的字体样式
@@ -305,7 +305,7 @@ function homeLeft3 (xAxisData, seriesData) {
   return option
 }
 
-function homeRight1 (xAxisData, seriesData) {
+function homeLeft23 (xAxisData, seriesData) {
   let option = {
       xAxis: {
         data: xAxisData,
@@ -769,5 +769,5 @@ function serverPeopleNumCharts(xAxisData,yAxisData) {
 }
 
 export default {
-  homeLeft1, homeLeft2, homeLeft3, homeRight1, homeRight2, homeRight3
+  homeLeft1, homeLeft21, homeLeft22, homeLeft23, homeRight2, homeRight3
 }
