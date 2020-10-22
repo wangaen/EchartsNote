@@ -49,9 +49,11 @@ export default {
       height: 0.6rem;
       text-align: center;
       line-height: 0.6rem;
+      border: 1px solid red;
     }
     .LeftChart1 {
-      height: 2.75rem; 
+      border: 1px solid yellow;
+      height: 2.8125rem; 
     }
   }
 </style>

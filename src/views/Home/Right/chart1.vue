@@ -51,7 +51,7 @@ export default {
       line-height: 0.6rem;
     }
     .RightChart1 {
-      height: 2.75rem; 
+      height: 2.8125rem;
     }
   }
 </style>

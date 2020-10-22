@@ -1,6 +1,6 @@
 <template>
   <div class="chart3">
-    <h2>刻度标签字数过多(竖直展示)</h2>
+    <h2>刻度标签字数过多(竖直)</h2>
     <div class="LeftChart3" ref="LeftChart3">
     </div>
   </div>
@@ -52,7 +52,7 @@ export default {
       line-height: 0.6rem;
     }
     .LeftChart3 {
-      height: 2.75rem; 
+      height: 2.8125rem;
     }
   }
 </style>

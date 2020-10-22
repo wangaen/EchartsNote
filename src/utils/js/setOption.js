@@ -201,12 +201,12 @@ function homeLeft3 (xAxisData, seriesData) {
           }
         }
       },
-    // 提示框组件相关设置
+      // 提示框组件相关设置
       tooltip:{
-        trigger:'axis',
+        trigger:'item',
         axisPointer:{
           type:'shadow'
-        }
+        },
       },
     // y轴相关设置
       yAxis: {
@@ -251,31 +251,38 @@ function homeLeft3 (xAxisData, seriesData) {
             show: true,
             rotate: 0,
             align: 'left',
-            verticalAlign: 'middle',
-            position: 'right',
+            verticalAlign: 'bottom',
+            position: 'bottom',
             distance: 0,
-            offset: [-25,-58],
+            offset: [17,-8],
             // 设置刻度标签与数据值
             formatter: function (params) {
-              let value = params.value
-              let valueStr = (''+value).split('')
-              let name = params.name.split('')
-              let dataLen = name.length
-              let newName = ''
-              let kouge = ''
-              // 确定相隔几个空格
-              for (let j=0; j<valueStr.length + 1; j++) {
-                kouge = kouge + '  '
-              }
-              for(let i=0; i<dataLen; i++) {
-                if (i === 1) {
-                  newName = newName + value + '  ' + name[i] + "\n";
-                }else {                   
-                  newName = newName + kouge+ name[i] + "\n";
-                }
-              }
-              return  newName
+              return params.name.split('').join('\n')
             },
+            fontSize: 13,
+            color: '#ffffff'
+          },
+          data: seriesData
+        },
+        {
+          type: 'bar',
+          barMaxWidth:10,
+          barGap: '-100%',
+          itemStyle: {
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [
+                  {offset: 0, color: '#81DD5F'},
+                  {offset: .33, color: '#83DE5F'},
+                  {offset: .66, color: '#BEF25C'},
+                  {offset: 1, color: '#D5EF2D'}
+              ]
+            ),
+            barBorderRadius: [5, 5, 0, 0]
+          },
+          label: {
+            show: true,
+            position: 'top',
             fontSize: 13,
             color: '#ffffff'
           },
@@ -510,27 +517,61 @@ function homeRight2 (xAxisData, seriesData, start=0, end=0) {
   return option
 }
 
-function homeRight3 (xAxisData, seriesData) {
+function homeRight3 (xAxisData, seriesData, start=0, end=0) {
+  let yAxisSecond = seriesData.slice(start , 8 + end)
+  let maxData = JSON.parse(JSON.stringify(seriesData)).sort((a,b) => b-a)[0]
+  let shadowData = []
+  for (let i=0; i<seriesData.length; i++) {
+    shadowData.push(maxData)
+  }
   let option = {
 
       xAxis: {
         type: 'value',
         show: false
       },
-      yAxis: {
-        data: xAxisData,
-        axisLabel: {
-          textStyle: {
-            color: '#fff'
+      yAxis: [
+        { 
+          data: xAxisData,
+          inverse: true,
+          axisLabel: {
+            textStyle: {
+              color: '#fff'
+            },
+            interval: 0,
+            fontSize: 14
           },
-          fontSize: 13
+          axisTick: {
+            show: false
+          },
+          axisLine: {
+            show: false
+          }
         },
-        axisTick: {
-          show: false
+        {
+          data: yAxisSecond,
+          inverse: true,
+          axisLabel: {
+            textStyle: {
+              color: '#fff'
+            },
+            interval: 0,
+            fontSize: 14
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine: {
+            show: false
+          }
         },
-        axisLine: {
-          show: false
-        }
+      ],
+      dataZoom: {
+        type: 'slider',
+        show: false,
+        yAxisIndex: 0,
+        startValue: start,
+        endValue: 7 + end,
       },
       tooltip:{
         trigger:'axis',
@@ -541,7 +582,7 @@ function homeRight3 (xAxisData, seriesData) {
       series: [
         {
           type: 'bar',
-          barMaxWidth:10,
+          barMaxWidth:12,
           itemStyle: {
             color: new echarts.graphic.LinearGradient(
               0, 0, 0, 1,
@@ -554,18 +595,26 @@ function homeRight3 (xAxisData, seriesData) {
             ),
             barBorderRadius: [5, 5, 5, 5]
           },
-          label: {
-            show: true,
-            position: 'right'
+          data: seriesData,
+          z:20
+        },
+        {
+          type: 'bar',
+          barMaxWidth:12,
+          barGap: '-100%',
+          itemStyle: {
+            barBorderRadius: [5, 5, 5, 5],
+            color: 'rgba(256,256,256,0.2)'
           },
-          data: seriesData
+          data: shadowData,
+          z: 10
         }
       ],
       grid: {
         left: '1%',
-        right: '8%',
+        right: '1%',
         bottom: '-5%',
-        top: '5%',
+        top: '2%',
         containLabel: true
       },
       //全局的字体样式
@@ -574,6 +623,149 @@ function homeRight3 (xAxisData, seriesData) {
       },
   };
   return option
+}
+
+// 服务人数
+function serverPeopleNumCharts(xAxisData,yAxisData) {
+  return {
+    color: '#ffffff',
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    yAxis: [
+      {
+        type: 'category',
+        show: true,
+        axisLabel: {
+          show: true,
+          fontSize: 13,
+          inside: false,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          show: false,
+          lineStyle:{
+            color:displayOneAxisLineColor
+          }
+        },
+        data: xAxisData
+      },
+      {
+        type: 'category',
+        show: true,
+        axisLabel: {
+          show: true,
+          fontSize: 13,
+          inside: false,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          show: false,
+          lineStyle:{
+            color:displayOneAxisLineColor
+          }
+        },
+        data: yAxisData
+      }
+    ],
+    xAxis: [
+      { 
+        // name:'单位：人',
+        show: false,
+        nameTextStyle:{
+          color: '#FFF',
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        axisTick:{
+          show:false
+        },
+        axisLine:{
+          lineStyle:{
+            color:displayOneAxisLineColor
+          }
+        },
+        splitLine:{
+          show:false
+        },
+        type: 'value'
+      }
+    ],
+    grid: {
+      left: '3%',
+      right: '0%',
+      bottom: '10%',
+      top: '5%',
+      containLabel: true
+    },
+    series: [
+      {
+          barMaxWidth:10,
+          itemStyle: {
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [
+                {offset: 0, color: '#3AEEE5'},
+  
+                {offset: 1, color: '#34F0B5'}
+              ]
+            ),
+            barBorderRadius: [5, 5, 5, 5]
+          },
+          type: 'bar',
+          barGap: 0,
+          label: {
+            // show: true,
+            // rotate: 0,
+            // align: 'left',
+            // verticalAlign: 'bottom',
+            // position: 'right',
+            // distance: 0,
+            // offset:[-20,10],
+            // 设置刻度标签与数据值
+            // formatter: function (params) {
+            //   let value = params.value
+            //   let valueStr = (''+value).split('')
+            //   let name = params.name.split('')
+            //   let dataLen = name.length
+            //   let newName = ''
+            //   let kouge = ''
+            //   // 确定相隔几个空格
+            //   for (let j=0; j<valueStr.length + 1; j++) {
+            //     kouge = kouge + '  '
+            //   }
+            //   for(let i=0; i<dataLen; i++) {
+            //     if (i === 1) {
+            //       newName = newName + value + '  ' + name[i] + "\n";
+            //     }else {                   
+            //       newName = newName + kouge+ name[i] + "\n";
+            //     }
+            //   }
+            //   return  newName
+            // },
+            fontSize: 13,
+            color: '#ffffff'
+          },
+          data: yAxisData
+      }
+    ]
+  };
 }
 
 export default {

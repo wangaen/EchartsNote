@@ -13,29 +13,67 @@ export default {
     mixins: [resizeChart],
     data(){
       return {
-        chart: '',
+        chart: null,
         barData: [
           {name: '广州市海珠区赤岗街道', value: 2290},
           {name: '广州市海珠区新港街道', value: 1999},
           {name: '广州市海珠区昌岗街道', value: 1087},
-          {name: '广州市海珠区江南中街道', value: 456},
+          {name: '广州市海珠区江南中街道', value: 1956},
           {name: '广州市海珠区滨江街道', value: 2789},
-          {name: '广州市海珠区素社街道', value: 756},
-          {name: '广州市海珠区海幢街道', value: 4000},
-        ]
+          {name: '广州市海珠区素社街道', value: 3276},
+          {name: '广州市海珠区江海街道', value: 4276},
+          {name: '广州市海珠区琶洲街道', value: 2536},
+          {name: '广州市海珠区南洲街道', value: 2616},
+          {name: '广州市海珠区华洲街道', value: 2816},
+          {name: '广州市海珠区官洲街道', value: 2446},
+          {name: '广州市海珠区海幢街道', value: 3000},
+        ],
+        start: 0,
+        end: 0,
+        dataLen:0,
+        timer: null,
+        xAxisData: null,
+        seriesData: null,
       }
     },
     mounted(){
-      this.myEchart()
+      this.getData()
+      this.startTime()
     },
     methods:{
-      myEchart (){
-        let xAxisData = this.barData.map(item => item.name)
-        let seriesData = this.barData.map(item => item.value)
+      getData (){
+        this.xAxisData = this.barData.map(item => item.name)
+        this.seriesData = this.barData.map(item => item.value)
+        this.dataLen = this.xAxisData.length
         this.chart = this.$Echarts.init(this.$refs.RightChart3)
-        this.chart.setOption(this.$setOption.homeRight3(xAxisData,seriesData))
+        this.chart.setOption(this.$setOption.homeRight3(this.xAxisData,this.seriesData))
+      },
+      charts () {
+        this.chart.setOption(this.$setOption.homeRight3(this.xAxisData,this.seriesData,this.start,this.end))
+      },
+      startTime() {
+        this.timer = setInterval( () => {
+          if (this.dataLen > 8) {
+            if (this.end === this.dataLen - 8) {
+              this.end = 0
+              this.start = 0
+            }else {
+              this.end ++
+              this.start ++
+            }
+            this.charts()
+          }else {
+            this.stopInterval()
+          }
+        },2000)
+      },
+      stopInterval() {
+        clearInterval(this.timer)
       }
     },
+    beforeDestroy(){
+      this.stopInterval()
+    }
   }
 </script>
 
@@ -52,7 +90,7 @@ export default {
       line-height: 0.6rem;
     }
     .RightChart3 {
-      height: 2.75rem; 
+      height: 2.8125rem;
     }
   }
 </style>

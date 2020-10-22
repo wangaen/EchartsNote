@@ -1,6 +1,11 @@
 <template>
   <div class="chart2">
     <h2>刻度标签字数过多(换行)</h2>
+    <div class="btn-main">
+      <span @click="btnChange(1)" :class="{'btn-bg' : currentIndex === 1}">换行</span>
+      <span @click="btnChange(2)" :class="{'btn-bg' : currentIndex === 2}">竖直(一)</span>
+      <span @click="btnChange(3)" :class="{'btn-bg' : currentIndex === 3}">换行(二)</span>
+    </div>
     <div class="LeftChart2" ref="LeftChart2">
     </div>
   </div>
@@ -14,6 +19,7 @@ export default {
     data(){
       return {
         chart: '',
+        currentIndex:1,
         barData: [
           {name: '广州市海珠区赤岗街道', value: 2290},
           {name: '广州市海珠区新港街道', value: 1999},
@@ -41,7 +47,9 @@ export default {
 
 <style scoped lang="less">
   .chart2{
-
+    .btn-bg {
+      background: red;
+    }
     h2 {
       font-size: 0.3rem;
       color: #ffffff;
@@ -52,7 +60,7 @@ export default {
       line-height: 0.6rem;
     }
     .LeftChart2 {
-      height: 2.75rem; 
+      height: 2.8125rem;
     }
   }
 </style>
