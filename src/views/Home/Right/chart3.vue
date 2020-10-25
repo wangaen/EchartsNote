@@ -38,7 +38,6 @@ export default {
     },
     mounted(){
       this.getData()
-      this.startTime()
     },
     methods:{
       getData (){
@@ -46,33 +45,8 @@ export default {
         this.seriesData = this.barData.map(item => item.value)
         this.dataLen = this.xAxisData.length
         this.chart = this.$Echarts.init(this.$refs.RightChart3)
-        this.chart.setOption(this.$setOption.homeRight3(this.xAxisData,this.seriesData))
+        this.chart.setOption(this.$setOption.homeRight31())
       },
-      charts () {
-        this.chart.setOption(this.$setOption.homeRight3(this.xAxisData,this.seriesData,this.start,this.end))
-      },
-      startTime() {
-        this.timer = setInterval( () => {
-          if (this.dataLen > 8) {
-            if (this.end === this.dataLen - 8) {
-              this.end = 0
-              this.start = 0
-            }else {
-              this.end ++
-              this.start ++
-            }
-            this.charts()
-          }else {
-            this.stopInterval()
-          }
-        },2000)
-      },
-      stopInterval() {
-        clearInterval(this.timer)
-      }
-    },
-    beforeDestroy(){
-      this.stopInterval()
     }
   }
 </script>

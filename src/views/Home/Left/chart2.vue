@@ -51,19 +51,16 @@ export default {
         this.currentIndex = value
         switch(value) {
           case 1:
-            console.log(value);
-            let chart1 = this.$Echarts.init(this.$refs.LeftChart2)
-            chart1.setOption(this.$setOption.homeLeft21(this.xAxisData, this.seriesData))
+            this.chart.clear() //清空实例中的所有组件和图表,防止出现图表错乱
+            this.chart.setOption(this.$setOption.homeLeft21(this.xAxisData,this.seriesData))
             break;
           case 2:
-            console.log(value);
-            let chart2 = this.$Echarts.init(this.$refs.LeftChart2)
-            chart2.setOption(this.$setOption.homeLeft22(this.xAxisData, this.seriesData))
+            this.chart.clear() //清空实例中的所有组件和图表,防止出现图表错乱
+            this.chart.setOption(this.$setOption.homeLeft22(this.xAxisData,this.seriesData))
             break;
           case 3:
-            console.log(value);
-            let chart3 = this.$Echarts.init(this.$refs.LeftChart2)
-            chart3.setOption(this.$setOption.homeLeft23(this.xAxisData, this.seriesData))
+            this.chart.clear() //清空实例中的所有组件和图表,防止出现图表错乱
+            this.chart.setOption(this.$setOption.homeLeft23(this.xAxisData,this.seriesData))
             break;
         }
       }
@@ -79,10 +76,10 @@ export default {
 
       h2 {
       display: inline-block;
-      font-size: 0.3rem;
+      margin: 0 0 0 0.25rem;
+      font-size: 0.375rem;
       color: #ffffff;
       font-weight: 400;
-      margin: 0rem;
       text-align: left;
       line-height: 0.6rem;
       }

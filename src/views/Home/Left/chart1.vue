@@ -42,12 +42,13 @@ export default {
 <style scoped lang="less">
   .chart1{
     h2 {
-      font-size: 0.3rem;
+      font-size: 0.375rem;
       color: #ffffff;
       font-weight: 400;
       margin: 0rem;
       height: 0.6rem;
       text-align: left;
+      margin-left: 0.25rem;
       line-height: 0.6rem;
     }
     .LeftChart1 {

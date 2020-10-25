@@ -1,6 +1,6 @@
 <template>
   <div class="chart2">
-    <h2>数据过多(水平滚动)</h2>
+    <h2>多图结合</h2>
     <div class="RightChart2" ref="RightChart2">
     </div>
   </div>
@@ -15,65 +15,32 @@ export default {
       return {
         chart: '',
         barData: [
-          {name: '广州市海珠区赤岗街道', value: 2290},
-          {name: '广州市海珠区新港街道', value: 1999},
-          {name: '广州市海珠区昌岗街道', value: 1087},
-          {name: '广州市海珠区江南中街道', value: 1956},
-          {name: '广州市海珠区滨江街道', value: 2789},
-          {name: '广州市海珠区素社街道', value: 3276},
-          {name: '广州市海珠区江海街道', value: 4276},
-          {name: '广州市海珠区琶洲街道', value: 2536},
-          {name: '广州市海珠区南洲街道', value: 2616},
-          {name: '广州市海珠区华洲街道', value: 2816},
-          {name: '广州市海珠区官洲街道', value: 2446},
-          {name: '广州市海珠区海幢街道', value: 3000},
+          {name: '广州市', value: 2290, value1: 3290},
+          {name: '深圳市', value: 1999, value1: 1339},
+          {name: '佛山市', value: 1087, value1: 1999},
+          {name: '东莞市', value: 2789, value1: 1899},
+          {name: '惠州市', value: 2276, value1: 2499},
+          {name: '湛江市', value: 3000, value1: 3099},
+          {name: '茂名市', value: 2816, value1: 2099},
+          {name: '汕头市', value: 2446, value1: 1119},
         ],
-        start: 0,
-        end: 0,
-        dataLength: 0,
         xAxisData: '',
-        seriesData: '',
+        seriesData1: '',
+        seriesData2: '',
         timer: ''
       }
     },
     mounted(){
       this.getData()
-      this.startTime()
     },
     methods:{
       getData (){
         this.xAxisData = this.barData.map(item => item.name)
-        this.dataLength = this.xAxisData.length
-        this.seriesData = this.barData.map(item => item.value)
+        this.seriesData1 = this.barData.map(item => item.value)
+        this.seriesData2 = this.barData.map(item => item.value1)
         this.chart = this.$Echarts.init(this.$refs.RightChart2)
-        this.chart.setOption(this.$setOption.homeRight2(this.xAxisData,this.seriesData))
+        this.chart.setOption(this.$setOption.homeRight21(this.xAxisData,this.seriesData1,this.seriesData2))
       },
-      myEchart() {
-        this.chart = this.$Echarts.init(this.$refs.RightChart2)
-        this.chart.setOption(this.$setOption.homeRight2(this.xAxisData,this.seriesData,this.start,this.end))
-      },
-      startTime(){
-        this.timer = setInterval( () => {
-          if (this.dataLength > 5) {
-            if (this.end === this.dataLength - 5) {
-              this.end = 0;
-              this.start = 0;
-            }else {
-              this.end = this.end + 1;
-              this.start = this.start + 1;
-            }
-            this.myEchart()
-          }else {
-            this.stopInterval()
-          }
-        }, 2000)
-      },
-      stopInterval(){
-        clearInterval(this.timer)
-      }
-    },
-    beforeDestroy(){
-      this.stopInterval()
     }
   }
 </script>
@@ -82,12 +49,11 @@ export default {
   .chart2{
 
     h2 {
-      font-size: 0.3rem;
+      font-size: 0.375rem;
+      margin: 0 0 0 0.25rem;
       color: #ffffff;
       font-weight: 400;
-      margin: 0rem;
-      height: 0.6rem;
-      text-align: center;
+      text-align: left;
       line-height: 0.6rem;
     }
     .RightChart2 {
