@@ -98,15 +98,15 @@ export default {
 <style lang='less'>
   .home{
     background: url('../../assets/image/main-back.png') no-repeat top center;
-    height: 12.8rem;
+    background-size: 100% 100%;
+    height: 13.5rem;
     width: 24rem;
 
-    .home-head {
-      margin-bottom: 0.125rem;
-    }
     .home-main{
       max-width: 1920px;
+      height: 11.875rem;
       margin: 0 auto;
+      padding-bottom: 0.25rem;
       display: flex;
       box-sizing: border-box;
 
@@ -115,11 +115,14 @@ export default {
         margin: 0rem 0.25rem;
         display: flex;
         flex-direction: column;
+        // border: 1px solid red;
         justify-content: space-between;
         box-sizing: border-box;
+
       }
       .center{
         margin: 0rem;
+        // border: 1px solid blue;
         flex: 8;
         box-sizing: border-box;
         padding: 0rem 0.125rem 0.125rem 0.125rem;

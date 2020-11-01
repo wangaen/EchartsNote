@@ -4,6 +4,24 @@ html,body {
   padding: 0;
 }
 
+//去掉下面，右边的滚动条
+// html {
+//   overflow-x: hidden;     
+//   overflow-y: hidden;    
+// }
+
+//约束屏幕尺寸
+@media screen and (max-width: 1080px) {
+  html {
+    font-size: 45px !important;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 80px !important;
+  }
+}
+
 // position: relative; —— 固定位置
 .main-panel {
   border: 1px solid rgba(0, 214, 255, 0.3);

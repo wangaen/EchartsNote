@@ -49,8 +49,9 @@ export default {
 
 <style lang='less'>
   .head{
-    height: 1.3rem;
+    height: 1.625rem;
     background: url('../../../assets/image/nav.png') no-repeat center;
+    background-size: 100% 100%;
     position: relative;
     color: #ffffff;
 

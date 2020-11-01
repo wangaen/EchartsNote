@@ -112,7 +112,7 @@ export default {
 
     .LeftChart2 {
       // border: 1px solid yellow;
-      height: 2.8125rem;
+      height: 3rem;
     }
   }
 </style>

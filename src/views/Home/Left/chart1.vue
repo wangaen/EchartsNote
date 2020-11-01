@@ -52,7 +52,7 @@ export default {
       line-height: 0.6rem;
     }
     .LeftChart1 {
-      height: 2.8125rem; 
+      height: 3rem; 
     }
   }
 </style>

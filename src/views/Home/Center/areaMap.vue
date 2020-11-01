@@ -3,7 +3,7 @@
     <div class="map"></div>
     <div class="grid"></div>
     <div class="rotate"></div>
-    <div class="myChart"></div>
+    <div class="myChart" ref="centerChart1"></div>
   </div>
 </template>
 
@@ -11,16 +11,25 @@
   export default {
     name : "areaMap" ,
     data(){
-      return {}
+      return {
+        chart: null,
+      }
     },
 
     components:{},
 
     created(){},
 
-    mounted(){},
+    mounted(){
+      this.charts()
+    },
 
-    methods:{},
+    methods:{
+      charts() {
+        this.chart = this.$Echarts.init(this.$refs.centerChart1)
+        this.chart.setOption(this.$setOption.homeCenter())
+      }
+    },
   }
 </script>
 
@@ -30,8 +39,8 @@
     position: relative;
     overflow: hidden;
     .map {
-      height: 6.475rem;
-      width: 6.475rem;
+      height: 8rem;
+      width: 8rem;
       background: url('../../../assets/image/map.png') no-repeat;
       background-size: 100% 100%;
       position: absolute;
@@ -43,8 +52,8 @@
       margin: auto;
     }
     .grid {
-      height: 8.0375rem;
-      width: 8.0375rem;
+      height: 9.0375rem;
+      width: 9.0375rem;
       position: absolute;
       background: url('../../../assets/image/grid.png');
       background-size: 100% 100%;
@@ -56,8 +65,8 @@
       animation: rotateGrid 15s linear infinite; 
     }
     .rotate {
-      height: 7.075rem;
-      width: 7.075rem;
+      height: 9.075rem;
+      width: 9.075rem;
       position: absolute;
       background: url('../../../assets/image/rotate.png');
       background-size: 100% 100%;

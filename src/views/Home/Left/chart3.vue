@@ -153,7 +153,7 @@ export default {
       }
     }
     .LeftChart3 {
-      height: 2.8125rem;
+      height: 3rem;
     }
   }
 </style>
